@@ -14,11 +14,37 @@
     <body>
         <div class="maincontainer">
 			<div class="topcont">
-				<input type="text" id="inp"><button class="add">Add</button>
-				<button class="del">Del</button><button class="top">top</button><button class="bot">Bot</button>
+				<input type="text" id="inp">
+				<input type="checkbox" id="cabCheck">Cab
+				<input type="checkbox" id="homeCheck">Home
+				<input type="checkbox" id="officeCheck">Office
+				<input type="checkbox" id="boringCheck">Boring
+				<input type="checkbox" id="energyburnCheck">EnergyBurn
+				<input type="checkbox" id="watchCheck">Watch
+				<button class="add">Add</button>
+				
 			</div>
-			<div class="bottom">
+			<div class="left">
 			</div>
+			<div class="right">
+				<div class=righttop>
+					<button class="del">Del</button>
+					<br><button class="top">top</button>
+					<br><button class="bot">Bot</button>
+				</div>
+				<div class="rightbottom">
+					<select id="filter">
+  						<option value="names">All</option>
+  						<option value="cab">Cab</option>
+ 						<option value="home">Home</option>
+  						<option value="office">Office</option>
+  						<option value="boring">Boring</option>
+  						<option value="energyburn">EnergyBurn</option>
+  						<option value="watch">Watch</option>
+					</select>
+				</div>
+			</div>
+			
 		</div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
