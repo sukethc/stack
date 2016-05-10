@@ -7,7 +7,8 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
 		<link rel="stylesheet" type="text/css" href="css/stack.css" />
         <title>Hello World</title>
     </head>
@@ -15,24 +16,19 @@
         <div class="maincontainer">
 			<div class="topcont">
 				<input type="text" id="inp">
-				<button class="add">Add</button>
-				<div class='checkboxDiv'>
-				<!-- <input type="checkbox" class='checkbox' id="cabCheck">Cab
-				<input type="checkbox" class='checkbox' id="homeCheck">Home
-				<input type="checkbox" class='checkbox' id="officeCheck">Office
-				<input type="checkbox" class='checkbox' id="boringCheck">Boring
-				<input type="checkbox" class='checkbox' id="energyburnCheck">EnergyBurn
-				<input type="checkbox" class='checkbox' id="watchCheck">Watch -->
+				<button class="add btn btn-info" id="add">Add</button>
+				<div class='checkboxDiv '>
 				</div>				
 			</div>
 			<div class="left">
 			</div>
 			<div class="right">
 				<div class=righttop>
-					<button class="del">Del</button>
-					<br><button class="top">top</button>
-					<br><button class="bot">Bot</button>
-					<br><button class="addClass">Add Class</button>
+					<button class="del btn btn-info">Del</button>
+					<br><button class="top btn btn-info">top</button>
+					<br><button class="bot btn btn-info">Bot</button>
+					<br><button class="addClass btn btn-info">Add Class</button>
+					<br><button class="delClass btn btn-info">Delete Class</button>
 				</div>
 				<div class="rightbottom">
 					<select id="filter">
@@ -51,6 +47,7 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/stack.js"></script>
         <script type="text/javascript">
             app.initialize();
