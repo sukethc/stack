@@ -1,4 +1,5 @@
-var checkArray=[]
+var checkArray=[];
+var emptyArray=[];
 $(document).ready(function(){
     if(localStorage.getItem("names")){
 		var storedNames = JSON.parse(localStorage.getItem("names"));
@@ -8,66 +9,27 @@ $(document).ready(function(){
 		}
 	}
 	else{
-		var names = [];
-		localStorage.setItem("names", JSON.stringify(names));	
-	}
-    
+		localStorage.setItem("names", JSON.stringify(emptyArray));	
+	}   
     
     if(localStorage.getItem("checkArray")){
     	checkArray = JSON.parse(localStorage.getItem("checkArray"));
 	}
 	else{
-		var emptyArray = [];
 		localStorage.setItem("checkArray", JSON.stringify(emptyArray));	
 	}
     
     for(i=0;i<checkArray.length;i++){
     	if(!localStorage.getItem(checkArray[i])){
-    		var empty=[]
-    		localStorage.setItem(checkArray[i], JSON.stringify(empty));
+    		localStorage.setItem(checkArray[i], JSON.stringify(emptyArray));
         }
-    	
-    	$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+checkArray[i]+"Check>"+checkArray[i]+"");
-    	$("#filter").append("<option value="+checkArray[i]+">"+checkArray[i]+"</option>");
-
+    	addCheckOptionElements(checkArray[i]);
     }
-    
-    /*if(!localStorage.getItem("cab")){
-		var cab = [];
-		localStorage.setItem("cab", JSON.stringify(cab));
-    }
-    if(!localStorage.getItem("home")){
-		var home = [];
-		localStorage.setItem("home", JSON.stringify(home));
-    }
-    if(!localStorage.getItem("office")){
-    	var office = [];
-    	localStorage.setItem("office", JSON.stringify(office));
-    }
-    if(!localStorage.getItem("boring")){
-    	var boring = [];
-		localStorage.setItem("boring", JSON.stringify(boring));
-    }
-    if(!localStorage.getItem("energyburn")){
-    	var energyburn = [];
-		localStorage.setItem("energyburn", JSON.stringify(energyburn));
-    }
-    if(!localStorage.getItem("watch")){
-    	var watch = [];
-		localStorage.setItem("watch", JSON.stringify(watch));
-    }*/
 });
 
  $(".add").click(function(){
-       var storedNames = JSON.parse(localStorage.getItem("names"));
-		var len=storedNames.length;
-		var innp=$("#inp").val();
-		storedNames[len]=innp;
-		var names = [];
-		names=storedNames;
-		localStorage.setItem("names", JSON.stringify(names));
-
-		/*var checkArray=['cab','home','office','boring','energyburn','watch'];*/
+	 	addToArray(names);
+		alert(checkArray.length);
 		for(i=0;i<checkArray.length;i++){
 			var id=checkArray[i]+"Check";
 			if(document.getElementById(id).checked){
@@ -83,26 +45,7 @@ $(document).ready(function(){
 	 var itemtext=$(this).text();
 	 var item=$(this);
 	 $(".del").click(function(){
-	       var storedNames = JSON.parse(localStorage.getItem("names"));
-			var len=storedNames.length;
-			var names = [];
-			for(var i=0;i<len;i++)
-				{
-				if(itemtext==storedNames[i]){
-					for(j=i+1;j<len;j++){
-						names[j-1]=storedNames[j];
-					}
-					break;
-				}
-				else
-					{
-					names[i]=storedNames[i];
-					}
-				}
-			
-
-			localStorage.setItem("names", JSON.stringify(names));
-			/*var checkArray=['cab','home','office','boring','energyburn','watch'];*/
+		 deleteFromArray(itemtext,'names');			
 			for(i=0;i<checkArray.length;i++){
 					deleteFromArray(itemtext,checkArray[i]);
 			}
@@ -185,11 +128,7 @@ function deleteFromArray(itemtext,arrayName){
 			names[i]=storedNames[i];
 			}
 		}
-	
-
 	localStorage.setItem(arrayName, JSON.stringify(names));
-
-	
 }
 $( "#filter" ).change(function() {
 	$(".left").empty();
@@ -204,11 +143,30 @@ $( "#filter" ).change(function() {
 $(".addClass").click(function(){
     var storedNames = JSON.parse(localStorage.getItem("checkArray"));
 		var len=storedNames.length;
-		var innp=prompt();
+		var innp=prompt("Enter");
 		storedNames[len]=innp;
 		var names = [];
 		names=storedNames;
+		checkArray=storedNames;
 		localStorage.setItem("checkArray", JSON.stringify(names));
-		$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+innp+"Check>"+innp+"");
-		$("#filter").append("<option value="+innp+">"+innp+"</option>");
- });
+		localStorage.setItem(innp, JSON.stringify(emptyArray));
+		addCheckOptionElements(innp);		
+});
+
+$(".delClass").click(function(){
+		var innp=prompt("Enter");
+		deleteFromArray(innp,'checkArray');
+		localStorage.setItem(innp, JSON.stringify(emptyArray));
+		checkArray = JSON.parse(localStorage.getItem("checkArray"));
+		delCheckOptionElements(innp);
+});
+
+function addCheckOptionElements(innp){
+	$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+innp+"Check>"+innp+"");
+	$("#filter").append("<option value="+innp+" id="+innp+"Option>"+innp+"</option>");
+}
+
+function delCheckOptionElements(innp){
+	$("#"+innp+"Check").remove();
+	$("#"+innp+"Option").remove();
+}
