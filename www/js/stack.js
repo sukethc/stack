@@ -27,7 +27,7 @@ $(document).ready(function(){
     		localStorage.setItem(checkArray[i], JSON.stringify(empty));
         }
     	
-    	$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+checkArray[i]+"'Check'>"+checkArray[i]+"");
+    	$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+checkArray[i]+"Check>"+checkArray[i]+"");
     	$("#filter").append("<option value="+checkArray[i]+">"+checkArray[i]+"</option>");
 
     }
@@ -170,7 +170,6 @@ function addToArray(arrayName){
 }
 function deleteFromArray(itemtext,arrayName){
 	var storedNames = JSON.parse(localStorage.getItem(arrayName));
-	alert(storedNames);
 	var len=storedNames.length;
 	var names = [];
 	for(var i=0;i<len;i++)
@@ -210,6 +209,6 @@ $(".addClass").click(function(){
 		var names = [];
 		names=storedNames;
 		localStorage.setItem("checkArray", JSON.stringify(names));
-		$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+innp+"'Check'>"+innp+"");
+		$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+innp+"Check>"+innp+"");
 		$("#filter").append("<option value="+innp+">"+innp+"</option>");
  });
