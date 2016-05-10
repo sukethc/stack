@@ -1,6 +1,25 @@
 .maincontainer{
+	
 margin:10%;
 }
 p{
-	font-size:20px;
+	font-size:120%;
 }
+.left{
+	width:65%;
+	float:left;
+}
+.right{
+	float:left;
+	width:30%;
+}
+.checkbox{
+	display: inline;
+}
+.btn{
+	margin-bottom: 10%;
+}
+#add.btn{
+	margin-bottom:0;
+}
+
