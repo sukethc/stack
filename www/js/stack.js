@@ -28,11 +28,14 @@ $(document).ready(function(){
 });
 
  $(".add").click(function(){
-	 	addToArray(names);
+	 	addToArray('names');
+		var innp=$("#inp").val();
 		alert(checkArray.length);
 		for(i=0;i<checkArray.length;i++){
 			var id=checkArray[i]+"Check";
+			alert(document.getElementById(id).checked);
 			if(document.getElementById(id).checked){
+				alert(checkArray[i]);
 				addToArray(checkArray[i]);
 			}
 		}
@@ -162,11 +165,12 @@ $(".delClass").click(function(){
 });
 
 function addCheckOptionElements(innp){
-	$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+innp+"Check>"+innp+"");
+	$(".checkboxDiv").append("<input type='checkbox' class='checkbox' id="+innp+"Check><span id="+innp+"Check>"+innp+"</span>");
 	$("#filter").append("<option value="+innp+" id="+innp+"Option>"+innp+"</option>");
 }
 
 function delCheckOptionElements(innp){
+	$("#"+innp+"Check").remove();
 	$("#"+innp+"Check").remove();
 	$("#"+innp+"Option").remove();
 }
