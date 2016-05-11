@@ -8,6 +8,7 @@ p{
 .left{
 	width:65%;
 	float:left;
+	margin-right:5%;
 }
 .right{
 	float:left;
@@ -18,8 +19,9 @@ p{
 }
 .btn{
 	margin-bottom: 10%;
+	width:80%;
 }
 #add.btn{
 	margin-bottom:0;
+	width:20%;
 }
-
