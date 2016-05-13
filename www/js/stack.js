@@ -73,7 +73,6 @@ $(document).ready(function(){
 				}
 
 			localStorage.setItem("names", JSON.stringify(names));
-			alert(itemtext);
 			item.remove();
 			$(".left").prepend(item);
 			item=$();
