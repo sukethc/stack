@@ -54,25 +54,10 @@ $(document).ready(function(){
 	 	});
 		
 	 $(".top").on("click", function(){
-	       var storedNames = JSON.parse(localStorage.getItem("names"));
-			var len=storedNames.length;
-			var names = [];
-			for(var i=0;i<len;i++)
-				{
-				if(itemtext==storedNames[i]){
-					for(j=i+1;j<len;j++){
-						names[j-1]=storedNames[j];
-					}
-					names[j-1]=itemtext;
-					break;
-				}
-				else
-					{
-					names[i]=storedNames[i];
-					}
-				}
-
-			localStorage.setItem("names", JSON.stringify(names));
+		 moveToTOp(itemtext,"names");
+		 for(i=0;i<checkArray.length;i++){
+					moveToTOp(itemtext,checkArray[i]);
+			}
 			item.remove();
 			$(".left").prepend(item);
 			item=$();
@@ -134,6 +119,29 @@ function deleteFromArray(itemtext,arrayName){
 		}
 		
 	localStorage.setItem(arrayName, JSON.stringify(names));
+}
+function moveToTOp(itemtext,arrayName){
+	var storedNames = JSON.parse(localStorage.getItem(arrayName));
+			var len=storedNames.length;
+			var names = [];
+			if(jQuery.inArray(itemtext, storedNames) !== -1){
+			for(var i=0;i<len;i++)
+				{
+				if(itemtext==storedNames[i]){
+					for(j=i+1;j<len;j++){
+						names[j-1]=storedNames[j];
+					}
+					names[j-1]=itemtext;
+					break;
+				}
+				else
+					{
+					names[i]=storedNames[i];
+					}
+				}
+
+			localStorage.setItem(arrayName, JSON.stringify(names));
+			}
 }
 $( "#filter" ).change(function() {
 	$(".left").empty();
