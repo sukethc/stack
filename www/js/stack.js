@@ -30,12 +30,9 @@ $(document).ready(function(){
  $(".add").click(function(){
 	 	addToArray('names');
 		var innp=$("#inp").val();
-		alert(checkArray.length);
 		for(i=0;i<checkArray.length;i++){
 			var id=checkArray[i]+"Check";
-			alert(document.getElementById(id).checked);
 			if(document.getElementById(id).checked){
-				alert(checkArray[i]);
 				addToArray(checkArray[i]);
 			}
 		}
@@ -47,14 +44,16 @@ $(document).ready(function(){
  $(document).on("click", ".stk", function(){
 	 var itemtext=$(this).text();
 	 var item=$(this);
-	 $(".del").click(function(){
+	 $(".del").on("click", function(){
 		 deleteFromArray(itemtext,'names');			
 			for(i=0;i<checkArray.length;i++){
 					deleteFromArray(itemtext,checkArray[i]);
 			}
 			item.remove();
+		item=$();
 	 	});
-	 $(".top").click(function(){
+		
+	 $(".top").on("click", function(){
 	       var storedNames = JSON.parse(localStorage.getItem("names"));
 			var len=storedNames.length;
 			var names = [];
@@ -74,8 +73,10 @@ $(document).ready(function(){
 				}
 
 			localStorage.setItem("names", JSON.stringify(names));
+			alert(itemtext);
 			item.remove();
 			$(".left").prepend(item);
+			item=$();
 	 	});
 	 
 	 $(".bot").click(function(){
@@ -100,6 +101,7 @@ $(document).ready(function(){
 			localStorage.setItem("names", JSON.stringify(names));
 			item.remove();
 			$(".left").append(item);
+			item=$();
 	 	});	 
 
 	});
@@ -131,6 +133,7 @@ function deleteFromArray(itemtext,arrayName){
 			names[i]=storedNames[i];
 			}
 		}
+		
 	localStorage.setItem(arrayName, JSON.stringify(names));
 }
 $( "#filter" ).change(function() {
